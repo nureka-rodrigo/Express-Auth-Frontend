@@ -4,7 +4,7 @@ import {Input} from "@/components/ui/input"
 import {Label} from "@/components/ui/label"
 import {Link} from "react-router-dom";
 import {Navbar} from "@/components/navbar.tsx";
-import {Footer} from "@/components/ui/Footer.tsx";
+import {Footer} from "@/components/footer.tsx";
 
 export function SignUp() {
   return (
