@@ -1,15 +1,15 @@
-import {Badge} from '@/components/ui/badge';
-import {Button, buttonVariants} from '@/components/ui/button';
-import {cn} from '@/lib/utils';
-import {Navbar} from "@/components/navbar.tsx";
-import {Footer} from "@/components/footer.tsx";
-import {Link} from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { Navbar } from "@/components/navbar.tsx";
+import { Footer } from "@/components/footer.tsx";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
       <div className="z-20">
-        <Navbar/>
+        <Navbar />
       </div>
 
       <div className="relative overflow-hidden">
@@ -17,22 +17,25 @@ export const Home = () => {
           <div className="absolute inset-x-0 top-0 z-10 flex size-full items-center justify-center opacity-100">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1125">
               <mask id="b" width={2000} height={1125} x={0} y={0}>
-                <path fill="url(#a)" d="M0 0h2000v1125H0z"/>
+                <path fill="url(#a)" d="M0 0h2000v1125H0z" />
               </mask>
-              <path fill="#fff" d="M0 0h2000v1125H0z"/>
+              <path fill="#fff" d="M0 0h2000v1125H0z" />
               <g
                 stroke="#eee"
                 strokeWidth={0.6}
                 mask="url(#b)"
                 style={{
-                  transformOrigin: 'center center',
+                  transformOrigin: "center center",
                 }}
               >
                 <path
                   fill="none"
                   d="M0 0h111.111v111.111H0zm111.111 0h111.111v111.111H111.111zm111.111 0h111.111v111.111H222.222zm111.111 0h111.111v111.111H333.333z"
                 />
-                <path fill="#eeeeeeaf" d="M444.444 0h111.111v111.111H444.444z"/>
+                <path
+                  fill="#eeeeeeaf"
+                  d="M444.444 0h111.111v111.111H444.444z"
+                />
                 <path
                   fill="none"
                   d="M555.556 0h111.111v111.111H555.556zm111.111 0h111.111v111.111H666.667zm111.111 0h111.111v111.111H777.778zm111.111 0H1000v111.111H888.889zM1000 0h111.111v111.111H1000zm111.111 0h111.111v111.111h-111.111z"
@@ -41,12 +44,12 @@ export const Home = () => {
                   fill="none"
                   d="M1222.222 0h111.111v111.111h-111.111zm111.111 0h111.111v111.111h-111.111z"
                 />
-                <path fill="none" d="M1444.444 0h111.111v111.111h-111.111z"/>
+                <path fill="none" d="M1444.444 0h111.111v111.111h-111.111z" />
                 <path
                   fill="#eeeeee0b"
                   d="M1555.556 0h111.111v111.111h-111.111z"
                 />
-                <path fill="none" d="M1666.667 0h111.111v111.111h-111.111z"/>
+                <path fill="none" d="M1666.667 0h111.111v111.111h-111.111z" />
                 <path
                   fill="#eeeeeed1"
                   d="M1777.778 0h111.111v111.111h-111.111z"
@@ -59,7 +62,10 @@ export const Home = () => {
                   fill="#eeeeee1c"
                   d="M111.111 111.111h111.111v111.111H111.111z"
                 />
-                <path fill="none" d="M222.222 111.111h111.111v111.111H222.222z"/>
+                <path
+                  fill="none"
+                  d="M222.222 111.111h111.111v111.111H222.222z"
+                />
                 <path
                   fill="#eeeeee2b"
                   d="M333.333 111.111h111.111v111.111H333.333z"
@@ -68,7 +74,10 @@ export const Home = () => {
                   fill="#eeeeeec2"
                   d="M444.444 111.111h111.111v111.111H444.444z"
                 />
-                <path fill="none" d="M555.556 111.111h111.111v111.111H555.556z"/>
+                <path
+                  fill="none"
+                  d="M555.556 111.111h111.111v111.111H555.556z"
+                />
                 <path
                   fill="#eeeeeeef"
                   d="M666.667 111.111h111.111v111.111H666.667z"
@@ -77,7 +86,10 @@ export const Home = () => {
                   fill="none"
                   d="M777.778 111.111h111.111v111.111H777.778zm111.111 0H1000v111.111H888.889z"
                 />
-                <path fill="#eeeeee77" d="M1000 111.111h111.111v111.111H1000z"/>
+                <path
+                  fill="#eeeeee77"
+                  d="M1000 111.111h111.111v111.111H1000z"
+                />
                 <path
                   fill="#eeeeeeea"
                   d="M1111.111 111.111h111.111v111.111h-111.111z"
@@ -114,7 +126,7 @@ export const Home = () => {
                   fill="#eeeeee1f"
                   d="M888.889 222.222H1000v111.111H888.889z"
                 />
-                <path fill="none" d="M1000 222.222h111.111v111.111H1000z"/>
+                <path fill="none" d="M1000 222.222h111.111v111.111H1000z" />
                 <path
                   fill="#eeeeeeb1"
                   d="M1111.111 222.222h111.111v111.111h-111.111z"
@@ -135,17 +147,23 @@ export const Home = () => {
                   fill="#eeeeee47"
                   d="M1888.889 222.222H2000v111.111h-111.111z"
                 />
-                <path fill="#eeeeeed0" d="M0 333.333h111.111v111.111H0z"/>
+                <path fill="#eeeeeed0" d="M0 333.333h111.111v111.111H0z" />
                 <path
                   fill="#eeeeeea6"
                   d="M111.111 333.333h111.111v111.111H111.111z"
                 />
-                <path fill="none" d="M222.222 333.333h111.111v111.111H222.222z"/>
+                <path
+                  fill="none"
+                  d="M222.222 333.333h111.111v111.111H222.222z"
+                />
                 <path
                   fill="#eeeeeebd"
                   d="M333.333 333.333h111.111v111.111H333.333z"
                 />
-                <path fill="none" d="M444.444 333.333h111.111v111.111H444.444z"/>
+                <path
+                  fill="none"
+                  d="M444.444 333.333h111.111v111.111H444.444z"
+                />
                 <path
                   fill="#eeeeee72"
                   d="M555.556 333.333h111.111v111.111H555.556z"
@@ -154,7 +172,10 @@ export const Home = () => {
                   fill="none"
                   d="M666.667 333.333h111.111v111.111H666.667zm111.111 0h111.111v111.111H777.778zm111.111 0H1000v111.111H888.889z"
                 />
-                <path fill="#eeeeee58" d="M1000 333.333h111.111v111.111H1000z"/>
+                <path
+                  fill="#eeeeee58"
+                  d="M1000 333.333h111.111v111.111H1000z"
+                />
                 <path
                   fill="none"
                   d="M1111.111 333.333h111.111v111.111h-111.111z"
@@ -183,7 +204,7 @@ export const Home = () => {
                   fill="#eeeeeebf"
                   d="M1888.889 333.333H2000v111.111h-111.111z"
                 />
-                <path fill="#eeeeee16" d="M0 444.444h111.111v111.111H0z"/>
+                <path fill="#eeeeee16" d="M0 444.444h111.111v111.111H0z" />
                 <path
                   fill="none"
                   d="M111.111 444.444h111.111v111.111H111.111zm111.111 0h111.111v111.111H222.222zm111.111 0h111.111v111.111H333.333zm111.111 0h111.111v111.111H444.444zm111.112 0h111.111v111.111H555.556zm111.111 0h111.111v111.111H666.667zm111.111 0h111.111v111.111H777.778z"
@@ -308,7 +329,7 @@ export const Home = () => {
                   fill="#eeeeee12"
                   d="M1888.889 666.667H2000v111.111h-111.111z"
                 />
-                <path fill="none" d="M0 777.778h111.111v111.111H0z"/>
+                <path fill="none" d="M0 777.778h111.111v111.111H0z" />
                 <path
                   fill="#eeeeee68"
                   d="M111.111 777.778h111.111v111.111H111.111z"
@@ -321,7 +342,10 @@ export const Home = () => {
                   fill="none"
                   d="M333.333 777.778h111.111v111.111H333.333zm111.111 0h111.111v111.111H444.444zm111.112 0h111.111v111.111H555.556zm111.111 0h111.111v111.111H666.667zm111.111 0h111.111v111.111H777.778zm111.111 0H1000v111.111H888.889z"
                 />
-                <path fill="#eeeeee46" d="M1000 777.778h111.111v111.111H1000z"/>
+                <path
+                  fill="#eeeeee46"
+                  d="M1000 777.778h111.111v111.111H1000z"
+                />
                 <path
                   fill="none"
                   d="M1111.111 777.778h111.111v111.111h-111.111z"
@@ -366,22 +390,28 @@ export const Home = () => {
                   fill="#eeeeee5d"
                   d="M333.333 888.889h111.111V1000H333.333z"
                 />
-                <path fill="none" d="M444.444 888.889h111.111V1000H444.444z"/>
+                <path fill="none" d="M444.444 888.889h111.111V1000H444.444z" />
                 <path
                   fill="#eeeeeefd"
                   d="M555.556 888.889h111.111V1000H555.556z"
                 />
-                <path fill="none" d="M666.667 888.889h111.111V1000H666.667z"/>
+                <path fill="none" d="M666.667 888.889h111.111V1000H666.667z" />
                 <path
                   fill="#eeeeee14"
                   d="M777.778 888.889h111.111V1000H777.778z"
                 />
-                <path fill="#eeeeee2b" d="M888.889 888.889H1000V1000H888.889z"/>
+                <path
+                  fill="#eeeeee2b"
+                  d="M888.889 888.889H1000V1000H888.889z"
+                />
                 <path
                   fill="#eeeeee11"
                   d="M1000 888.889h111.111V1000H1000zm111.111 0h111.111V1000h-111.111z"
                 />
-                <path fill="none" d="M1222.222 888.889h111.111V1000h-111.111z"/>
+                <path
+                  fill="none"
+                  d="M1222.222 888.889h111.111V1000h-111.111z"
+                />
                 <path
                   fill="#eeeeeecb"
                   d="M1333.333 888.889h111.111V1000h-111.111z"
@@ -390,7 +420,10 @@ export const Home = () => {
                   fill="none"
                   d="M1444.444 888.889h111.111V1000h-111.111zm111.112 0h111.111V1000h-111.111z"
                 />
-                <path fill="none" d="M1666.667 888.889h111.111V1000h-111.111z"/>
+                <path
+                  fill="none"
+                  d="M1666.667 888.889h111.111V1000h-111.111z"
+                />
                 <path
                   fill="#eeeeee2f"
                   d="M1777.778 888.889h111.111V1000h-111.111z"
@@ -411,7 +444,7 @@ export const Home = () => {
                   fill="none"
                   d="M777.778 1000h111.111v111.111H777.778zm111.111 0H1000v111.111H888.889z"
                 />
-                <path fill="#eeeeeef0" d="M1000 1000h111.111v111.111H1000z"/>
+                <path fill="#eeeeeef0" d="M1000 1000h111.111v111.111H1000z" />
                 <path
                   fill="#eeeeeea8"
                   d="M1111.111 1000h111.111v111.111h-111.111z"
@@ -420,8 +453,14 @@ export const Home = () => {
                   fill="#eeeeeecf"
                   d="M1222.222 1000h111.111v111.111h-111.111z"
                 />
-                <path fill="none" d="M1333.333 1000h111.111v111.111h-111.111z"/>
-                <path fill="none" d="M1444.444 1000h111.111v111.111h-111.111z"/>
+                <path
+                  fill="none"
+                  d="M1333.333 1000h111.111v111.111h-111.111z"
+                />
+                <path
+                  fill="none"
+                  d="M1444.444 1000h111.111v111.111h-111.111z"
+                />
                 <path
                   fill="#eeeeeede"
                   d="M1555.556 1000h111.111v111.111h-111.111z"
@@ -430,9 +469,12 @@ export const Home = () => {
                   fill="#eeeeee29"
                   d="M1666.667 1000h111.111v111.111h-111.111z"
                 />
-                <path fill="none" d="M1777.778 1000h111.111v111.111h-111.111z"/>
-                <path fill="none" d="M1888.889 1000H2000v111.111h-111.111z"/>
-                <path fill="#eeeeeefd" d="M0 1111.111h111.111v111.111H0z"/>
+                <path
+                  fill="none"
+                  d="M1777.778 1000h111.111v111.111h-111.111z"
+                />
+                <path fill="none" d="M1888.889 1000H2000v111.111h-111.111z" />
+                <path fill="#eeeeeefd" d="M0 1111.111h111.111v111.111H0z" />
                 <path
                   fill="#eeeeee48"
                   d="M111.111 1111.111h111.111v111.111H111.111z"
@@ -476,28 +518,24 @@ export const Home = () => {
               </g>
               <defs>
                 <radialGradient id="a">
-                  <stop offset={0} stopColor="#fff"/>
-                  <stop offset={1} stopColor="#fff" stopOpacity={0}/>
+                  <stop offset={0} stopColor="#fff" />
+                  <stop offset={1} stopColor="#fff" stopOpacity={0} />
                 </radialGradient>
               </defs>
             </svg>
           </div>
           <div className="mx-auto flex max-w-5xl flex-col items-center">
             <div className="z-10 flex flex-col items-center gap-6 text-center">
-              <img
-                src="/vite.svg"
-                alt="logo"
-                className="h-16"
-              />
+              <img src="/vite.svg" alt="logo" className="h-16" />
               <Badge variant="outline">Express Auth</Badge>
               <div>
                 <h1 className="mb-6 text-pretty text-2xl font-bold lg:text-5xl">
                   Welcome to Express Auth
                 </h1>
                 <p className="text-muted-foreground lg:text-xl">
-                  A simple authentication system built with Express.js and TypeScript that uses JWT for authentication.
-                  It
-                  is designed to be easy to use and easy to understand.
+                  A simple authentication system built with Express.js and
+                  TypeScript that uses JWT for authentication. It is designed to
+                  be easy to use and easy to understand.
                 </p>
               </div>
               <div className="mt-4 flex justify-center gap-2">
@@ -513,8 +551,8 @@ export const Home = () => {
                   <a
                     href="#"
                     className={cn(
-                      buttonVariants({variant: 'outline'}),
-                      'group px-3',
+                      buttonVariants({ variant: "outline" }),
+                      "group px-3"
                     )}
                   >
                     <img
@@ -526,8 +564,8 @@ export const Home = () => {
                   <a
                     href="#"
                     className={cn(
-                      buttonVariants({variant: 'outline'}),
-                      'group px-3',
+                      buttonVariants({ variant: "outline" }),
+                      "group px-3"
                     )}
                   >
                     <img
@@ -540,8 +578,8 @@ export const Home = () => {
                   <a
                     href="#"
                     className={cn(
-                      buttonVariants({variant: 'outline'}),
-                      'group px-3',
+                      buttonVariants({ variant: "outline" }),
+                      "group px-3"
                     )}
                   >
                     <img
@@ -553,8 +591,8 @@ export const Home = () => {
                   <a
                     href="#"
                     className={cn(
-                      buttonVariants({variant: 'outline'}),
-                      'group px-3',
+                      buttonVariants({ variant: "outline" }),
+                      "group px-3"
                     )}
                   >
                     <img
@@ -571,7 +609,7 @@ export const Home = () => {
       </div>
 
       <div className="z-20">
-        <Footer/>
+        <Footer />
       </div>
     </section>
   );

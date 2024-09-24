@@ -1,15 +1,21 @@
-import {Button} from "@/components/ui/button"
-import {Card, CardContent, CardDescription, CardHeader, CardTitle,} from "@/components/ui/card"
-import {Input} from "@/components/ui/input"
-import {Label} from "@/components/ui/label"
-import {Link} from "react-router-dom";
-import {Navbar} from "@/components/navbar.tsx";
-import {Footer} from "@/components/footer.tsx";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Link } from "react-router-dom";
+import { Navbar } from "@/components/navbar.tsx";
+import { Footer } from "@/components/footer.tsx";
 
 export function SignUp() {
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
-      <Navbar/>
+      <Navbar />
 
       <div className="flex justify-center items-center px-4">
         <Card className="mx-auto max-w-sm">
@@ -23,11 +29,11 @@ export function SignUp() {
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="first-name">First name</Label>
-                <Input id="first-name" placeholder="Max" required/>
+                <Input id="first-name" placeholder="Max" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="last-name">Last name</Label>
-                <Input id="last-name" placeholder="Robinson" required/>
+                <Input id="last-name" placeholder="Robinson" required />
               </div>
             </div>
             <div className="grid gap-2">
@@ -41,11 +47,15 @@ export function SignUp() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="********"/>
+              <Input id="password" type="password" placeholder="********" />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input id="confirmPassword" type="password" placeholder="********"/>
+              <Input
+                id="confirmPassword"
+                type="password"
+                placeholder="********"
+              />
             </div>
             <Button type="submit" className="w-full">
               Create an account
@@ -60,7 +70,7 @@ export function SignUp() {
         </Card>
       </div>
 
-      <Footer/>
+      <Footer />
     </section>
-  )
+  );
 }
