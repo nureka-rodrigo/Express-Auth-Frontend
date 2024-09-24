@@ -37,18 +37,19 @@ export function SignUp() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password"/>
+              <Input id="password" type="password" placeholder="********"/>
+            </div>
+            <div className="grid gap-2">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input id="confirmPassword" type="password" placeholder="********"/>
             </div>
             <Button type="submit" className="w-full">
               Create an account
             </Button>
-            <Button variant="outline" className="w-full">
-              Sign up with GitHub
-            </Button>
           </div>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
-            <Link to="#" className="underline">
+            <Link to="/sign-in" className="underline">
               Sign in
             </Link>
           </div>
