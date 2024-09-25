@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "@/components/navbar.tsx";
 import { Footer } from "@/components/footer.tsx";
 
-export function SignIn() {
+export const SignIn = () => {
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
       <Navbar />
@@ -35,6 +35,11 @@ export function SignIn() {
                 placeholder="m@example.com"
                 required
               />
+            </div>
+            <div className="text-end text-sm -mb-3">
+              <Link to="/forgot-password" className="underline">
+                Forgot password?
+              </Link>
             </div>
             <div className="grid gap-2">
               <Label htmlFor="password">Password</Label>
@@ -61,4 +66,4 @@ export function SignIn() {
       <Footer />
     </section>
   );
-}
+};
