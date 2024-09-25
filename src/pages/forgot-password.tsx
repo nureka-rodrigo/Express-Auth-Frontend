@@ -106,7 +106,7 @@ export const ForgotPassword = () => {
                     <Card className="w-full max-w-sm">
                       <CardHeader>
                         <CardTitle className="text-2xl">
-                          Reset Password
+                          Reset Password - Step 1/3
                         </CardTitle>
                         <CardDescription>
                           Enter your email to receive an OTP to reset your
@@ -144,7 +144,7 @@ export const ForgotPassword = () => {
           <Form {...otpForm}>
             <form
               onSubmit={otpForm.handleSubmit(handleSubmitOtp)}
-              className="space-y-6"
+              className="min-w-80 space-y-6"
             >
               <FormField
                 control={otpForm.control}
@@ -154,7 +154,7 @@ export const ForgotPassword = () => {
                     <Card className="w-full max-w-sm">
                       <CardHeader>
                         <CardTitle className="text-2xl">
-                          Reset Password
+                          Reset Password - Step 2/3
                         </CardTitle>
                         <CardDescription>
                           Enter your OTP to reset your password.
@@ -205,7 +205,7 @@ export const ForgotPassword = () => {
                     <Card className="w-full max-w-sm">
                       <CardHeader>
                         <CardTitle className="text-2xl">
-                          Reset Password
+                          Reset Password - Step 3/3
                         </CardTitle>
                         <CardDescription>Enter a new password.</CardDescription>
                       </CardHeader>
