@@ -7,67 +7,160 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/navbar.tsx";
 import { Footer } from "@/components/footer.tsx";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { toast } from "@/hooks/use-toast";
+import { signUpSchema } from "@/validations/sign-up.tsx";
 
 export const SignUp = () => {
+  const signUpForm = useForm<z.infer<typeof signUpSchema>>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  const handleSubmitSignUp = (data: z.infer<typeof signUpSchema>) => {
+    console.log(data);
+    toast({
+      title: "Success",
+      description: "You have successfully signed up.",
+    });
+  };
+
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
       <Navbar />
 
       <div className="flex justify-center items-center px-4">
-        <Card className="mx-auto max-w-sm">
-          <CardHeader>
-            <CardTitle className="text-2xl">Sign Up</CardTitle>
-            <CardDescription>
-              Enter your information to create an account
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="first-name">First name</Label>
-                <Input id="first-name" placeholder="Max" required />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="last-name">Last name</Label>
-                <Input id="last-name" placeholder="Robinson" required />
-              </div>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="********" />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="confirmPassword">Confirm Password</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="********"
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              Create an account
-            </Button>
-            <div className="mt-4 text-center text-sm">
-              Already have an account?{" "}
-              <Link to="/sign-in" className="underline">
-                Sign in
-              </Link>
-            </div>
-          </CardContent>
-        </Card>
+        <Form {...signUpForm}>
+          <form
+            onSubmit={signUpForm.handleSubmit(handleSubmitSignUp)}
+            className="space-y-6"
+          >
+            <Card className="mx-auto max-w-sm">
+              <CardHeader>
+                <CardTitle className="text-2xl">Sign Up</CardTitle>
+                <CardDescription>
+                  Enter your information to create an account
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="grid gap-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <FormField
+                    control={signUpForm.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>First name</FormLabel>
+                        <FormControl>
+                          <Input id="first-name" placeholder="Max" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={signUpForm.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Last name</FormLabel>
+                        <FormControl>
+                          <Input
+                            id="last-name"
+                            placeholder="Robinson"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={signUpForm.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="m@example.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={signUpForm.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="password"
+                          type="password"
+                          placeholder="********"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={signUpForm.control}
+                  name="confirmPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Confirm Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="confirmPassword"
+                          type="password"
+                          placeholder="********"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full">
+                  Create an account
+                </Button>
+                <div className="mt-4 text-center text-sm">
+                  Already have an account?{" "}
+                  <Link to="/sign-in" className="underline">
+                    Sign in
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </form>
+        </Form>
       </div>
 
       <Footer />
