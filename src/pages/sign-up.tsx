@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { Navbar } from "@/components/navbar.tsx";
 import { Footer } from "@/components/footer.tsx";
 
-export function SignUp() {
+export const SignUp = () => {
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
       <Navbar />
@@ -73,4 +73,4 @@ export function SignUp() {
       <Footer />
     </section>
   );
-}
+};

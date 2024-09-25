@@ -51,7 +51,7 @@ export const ForgotPassword = () => {
     setIsEmailSent(true);
     console.log(data.email);
     toast({
-      title: "OTP Sent",
+      title: "Success",
       description: "An OTP has been sent to your email.",
     });
   };
@@ -59,7 +59,7 @@ export const ForgotPassword = () => {
   const handleSubmitOtp = (data: z.infer<typeof OtpSchema>) => {
     console.log(data.pin);
     toast({
-      title: "OTP Verified",
+      title: "Success",
       description: "Your OTP has been verified.",
     });
   };

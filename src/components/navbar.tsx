@@ -1,5 +1,4 @@
 import { Menu } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
-import {ThemeToggle} from "@/components/theme-switcher.tsx";
+import { ThemeToggle } from "@/components/theme-switcher.tsx";
 
 export const Navbar = () => {
   return (
@@ -19,7 +18,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-6">
             <Link to="/">
               <div className="flex items-center gap-2">
-                <img src="/vite.svg" className="w-8" alt="logo"/>
+                <img src="/vite.svg" className="w-8" alt="logo" />
                 <span className="text-xl font-bold">Express Auth</span>
               </div>
             </Link>
@@ -38,7 +37,7 @@ export const Navbar = () => {
           <div className="flex items-center justify-between">
             <Link to="/">
               <div className="flex items-center gap-2">
-                <img src="/vite.svg" className="w-8" alt="logo"/>
+                <img src="/vite.svg" className="w-8" alt="logo" />
                 <span className="text-xl font-bold">Express Auth</span>
               </div>
             </Link>
@@ -54,7 +53,7 @@ export const Navbar = () => {
                   <SheetTitle>
                     <Link to="/">
                       <div className="flex items-center gap-2">
-                        <img src="/vite.svg" className="w-8" alt="logo"/>
+                        <img src="/vite.svg" className="w-8" alt="logo" />
                         <span className="text-xl font-bold">Express Auth</span>
                       </div>
                     </Link>
