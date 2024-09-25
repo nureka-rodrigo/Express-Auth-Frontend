@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Link } from "react-router-dom";
+import {ThemeToggle} from "@/components/theme-switcher.tsx";
 
 export const Navbar = () => {
   return (
@@ -16,10 +17,12 @@ export const Navbar = () => {
       <div className="container">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <img src="/vite.svg" className="w-8" alt="logo" />
-              <span className="text-xl font-bold">Express Auth</span>
-            </div>
+            <Link to="/">
+              <div className="flex items-center gap-2">
+                <img src="/vite.svg" className="w-8" alt="logo"/>
+                <span className="text-xl font-bold">Express Auth</span>
+              </div>
+            </Link>
           </div>
           <div className="flex gap-2">
             <Link to="/sign-in">
@@ -28,14 +31,18 @@ export const Navbar = () => {
             <Link to="/sign-up">
               <Button>Sign up</Button>
             </Link>
+            <ThemeToggle />
           </div>
         </nav>
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src="/vite.svg" className="w-8" alt="logo" />
-              <span className="text-xl font-bold">Express Auth</span>
-            </div>
+            <Link to="/">
+              <div className="flex items-center gap-2">
+                <img src="/vite.svg" className="w-8" alt="logo"/>
+                <span className="text-xl font-bold">Express Auth</span>
+              </div>
+            </Link>
+            <ThemeToggle />
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant={"outline"} size={"icon"}>
@@ -45,10 +52,12 @@ export const Navbar = () => {
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <div className="flex items-center gap-2">
-                      <img src="/vite.svg" className="w-8" alt="logo" />
-                      <span className="text-xl font-bold">Express Auth</span>
-                    </div>
+                    <Link to="/">
+                      <div className="flex items-center gap-2">
+                        <img src="/vite.svg" className="w-8" alt="logo"/>
+                        <span className="text-xl font-bold">Express Auth</span>
+                      </div>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="border-t mt-4 pt-4">

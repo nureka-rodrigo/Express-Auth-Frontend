@@ -7,7 +7,7 @@ import { Home } from "@/pages/home.tsx";
 function App() {
   return (
     <>
-      <div className="bg-background dark:bg-foreground">
+      <div className="bg-white dark:bg-black">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />
