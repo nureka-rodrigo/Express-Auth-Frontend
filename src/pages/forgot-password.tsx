@@ -28,10 +28,16 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { toast } from "@/hooks/use-toast";
-import { emailSchema, OtpSchema } from "@/validations/forgot-password";
+import {
+  emailSchema,
+  otpSchema,
+  passwordSchema,
+} from "@/validations/forgot-password";
+import {useNavigate} from "react-router-dom";
 
 export const ForgotPassword = () => {
-  const [isEmailSent, setIsEmailSent] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
+  const navigate = useNavigate();
 
   const emailForm = useForm<z.infer<typeof emailSchema>>({
     resolver: zodResolver(emailSchema),
@@ -40,15 +46,22 @@ export const ForgotPassword = () => {
     },
   });
 
-  const otpForm = useForm<z.infer<typeof OtpSchema>>({
-    resolver: zodResolver(OtpSchema),
+  const otpForm = useForm<z.infer<typeof otpSchema>>({
+    resolver: zodResolver(otpSchema),
     defaultValues: {
       pin: "",
     },
   });
 
+  const passwordForm = useForm<z.infer<typeof passwordSchema>>({
+    resolver: zodResolver(passwordSchema),
+    defaultValues: {
+      password: "",
+    },
+  });
+
   const handleSubmitEmail = (data: z.infer<typeof emailSchema>) => {
-    setIsEmailSent(true);
+    setCurrentStep(2);
     console.log(data.email);
     toast({
       title: "Success",
@@ -56,7 +69,8 @@ export const ForgotPassword = () => {
     });
   };
 
-  const handleSubmitOtp = (data: z.infer<typeof OtpSchema>) => {
+  const handleSubmitOtp = (data: z.infer<typeof otpSchema>) => {
+    setCurrentStep(3);
     console.log(data.pin);
     toast({
       title: "Success",
@@ -64,12 +78,69 @@ export const ForgotPassword = () => {
     });
   };
 
+  const handleSubmitPassword = (data: z.infer<typeof passwordSchema>) => {
+    console.log(data.password);
+    toast({
+      title: "Success",
+      description: "Your password has been reset.",
+    });
+    navigate("/sign-in");
+  };
+
   return (
     <section className="flex flex-col justify-between h-screen max-w-7xl w-full mx-auto">
       <Navbar />
 
       <div className="flex justify-center items-center px-4">
-        {isEmailSent ? (
+        {currentStep === 1 && (
+          <Form {...emailForm}>
+            <form
+              onSubmit={emailForm.handleSubmit(handleSubmitEmail)}
+              className="min-w-96 space-y-6"
+            >
+              <FormField
+                control={emailForm.control}
+                name="email"
+                render={({ field }) => (
+                  <>
+                    <Card className="w-full max-w-sm">
+                      <CardHeader>
+                        <CardTitle className="text-2xl">
+                          Reset Password
+                        </CardTitle>
+                        <CardDescription>
+                          Enter your email to receive an OTP to reset your
+                          password.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="grid gap-4">
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="email"
+                              type="text"
+                              placeholder="example@gmail.com"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      </CardContent>
+                      <CardFooter>
+                        <Button type="submit" className="w-full">
+                          Proceed
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </>
+                )}
+              />
+            </form>
+          </Form>
+        )}
+
+        {currentStep === 2 && (
           <Form {...otpForm}>
             <form
               onSubmit={otpForm.handleSubmit(handleSubmitOtp)}
@@ -118,15 +189,17 @@ export const ForgotPassword = () => {
               />
             </form>
           </Form>
-        ) : (
-          <Form {...emailForm}>
+        )}
+
+        {currentStep === 3 && (
+          <Form {...passwordForm}>
             <form
-              onSubmit={emailForm.handleSubmit(handleSubmitEmail)}
-              className="space-y-6"
+              onSubmit={passwordForm.handleSubmit(handleSubmitPassword)}
+              className="min-w-96 space-y-6"
             >
               <FormField
-                control={emailForm.control}
-                name="email"
+                control={passwordForm.control}
+                name="password"
                 render={({ field }) => (
                   <>
                     <Card className="w-full max-w-sm">
@@ -134,19 +207,16 @@ export const ForgotPassword = () => {
                         <CardTitle className="text-2xl">
                           Reset Password
                         </CardTitle>
-                        <CardDescription>
-                          Enter your email to receive an OTP to reset your
-                          password.
-                        </CardDescription>
+                        <CardDescription>Enter a new password.</CardDescription>
                       </CardHeader>
                       <CardContent className="grid gap-4">
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>Password</FormLabel>
                           <FormControl>
                             <Input
-                              id="email"
-                              type="text"
-                              placeholder="example@gmail.com"
+                              id="password"
+                              type="password"
+                              placeholder="********"
                               {...field}
                             />
                           </FormControl>
@@ -155,7 +225,7 @@ export const ForgotPassword = () => {
                       </CardContent>
                       <CardFooter>
                         <Button type="submit" className="w-full">
-                          Proceed
+                          Submit
                         </Button>
                       </CardFooter>
                     </Card>
