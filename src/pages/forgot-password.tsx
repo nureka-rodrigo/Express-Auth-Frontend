@@ -29,9 +29,14 @@ import {
   passwordSchema,
 } from "@/validations";
 import {useNavigate} from "react-router-dom";
+import { apiClient } from "@/api";
+import {LoaderCircle} from "lucide-react";
 
 export const ForgotPassword = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
   const emailForm = useForm<z.infer<typeof emailSchema>>({
@@ -55,40 +60,86 @@ export const ForgotPassword = () => {
     },
   });
 
-  const handleSubmitEmail = (data: z.infer<typeof emailSchema>) => {
-    setCurrentStep(2);
-    console.log("Email:", data.email);
+  const handleSubmitEmail = async (data: z.infer<typeof emailSchema>) => {
+    setIsLoading(true);
+    try {
+      const client = apiClient();
+      await client.post('/auth/forgot-password/validate-email', data);
 
-    toast({
-      title: "Success",
-      description: "An OTP has been sent to your email.",
-    });
+      toast({
+        title: "Success",
+        description: "An OTP has been sent to your email.",
+      });
 
-    emailForm.reset();
+      setEmail(data.email);
+      setCurrentStep(2);
+      emailForm.reset();
+    } catch (error) {
+      const response = error.response;
+      toast({
+          title: "Error",
+          description: response.data.error ? response.data.error : response.data.message,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSubmitOtp = (data: z.infer<typeof otpSchema>) => {
-    setCurrentStep(3);
-    console.log("OTP:", data.pin);
+  const handleSubmitOtp = async (data: z.infer<typeof otpSchema>) => {
+    setIsLoading(true);
+    try {
+      const client = apiClient();
+      await client.post('/auth/forgot-password/validate-otp', {
+        email,
+        otp: data.pin
+      });
 
-    toast({
-      title: "Success",
-      description: "Your OTP has been verified.",
-    });
+      toast({
+        title: "Success",
+        description: "OTP has been verified.",
+      });
 
-    otpForm.reset();
+      setOtp(data.pin);
+      setCurrentStep(3);
+      otpForm.reset();
+    } catch (error) {
+      const response = error.response;
+      toast({
+        title: "Error",
+        description: response.data.error ? response.data.error : response.data.message,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleSubmitPassword = (data: z.infer<typeof passwordSchema>) => {
-    console.log("Password:", data.password);
+  const handleSubmitPassword = async (data: z.infer<typeof passwordSchema>) => {
+    setIsLoading(true);
+    try {
+      const client = apiClient();
+      await client.post('/auth/forgot-password/reset-password', {
+        email,
+        otp,
+        password: data.password
+      });
 
-    toast({
-      title: "Success",
-      description: "Your password has been reset.",
-    });
+      toast({
+        title: "Success",
+        description: "Password has been reset.",
+      });
 
-    passwordForm.reset();
-    navigate("/sign-in");
+      setCurrentStep(2);
+      passwordForm.reset();
+      navigate('/sign-in');
+    } catch (error) {
+      const response = error.response;
+      toast({
+        title: "Error",
+        description: response.data.error ? response.data.error : response.data.message,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -132,8 +183,9 @@ export const ForgotPassword = () => {
                         </FormItem>
                       </CardContent>
                       <CardFooter>
-                        <Button type="submit" className="w-full">
+                        <Button type="submit" className="w-full gap-2">
                           Proceed
+                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
                         </Button>
                       </CardFooter>
                     </Card>
@@ -183,8 +235,9 @@ export const ForgotPassword = () => {
                         </FormItem>
                       </CardContent>
                       <CardFooter>
-                        <Button type="submit" className="w-full">
+                        <Button type="submit" className="w-full gap-2">
                           Proceed
+                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
                         </Button>
                       </CardFooter>
                     </Card>
@@ -228,8 +281,9 @@ export const ForgotPassword = () => {
                         </FormItem>
                       </CardContent>
                       <CardFooter>
-                        <Button type="submit" className="w-full">
-                          Submit
+                        <Button type="submit" className="w-full gap-2">
+                          Reset
+                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
                         </Button>
                       </CardFooter>
                     </Card>
