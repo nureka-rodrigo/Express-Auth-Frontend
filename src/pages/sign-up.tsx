@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { Navbar } from "@/components/navbar.tsx";
 import { Footer } from "@/components/footer.tsx";
 import { useForm } from "react-hook-form";
@@ -23,8 +23,11 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast";
 import { signUpSchema } from "@/validations/sign-up.tsx";
+import { apiClient } from "@/api/axios";
 
 export const SignUp = () => {
+  const navigate = useNavigate();
+
   const signUpForm = useForm<z.infer<typeof signUpSchema>>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -36,12 +39,24 @@ export const SignUp = () => {
     },
   });
 
-  const handleSubmitSignUp = (data: z.infer<typeof signUpSchema>) => {
-    console.log(data);
-    toast({
-      title: "Success",
-      description: "You have successfully signed up.",
-    });
+  const handleSubmitSignUp = async (data: z.infer<typeof signUpSchema>) => {
+    try {
+      const client = apiClient();
+      await client.post('/auth/sign-up', data);
+
+      toast({
+        title: "Success",
+        description: "You have successfully signed up.",
+      });
+
+      signUpForm.reset();
+      navigate("/sign-in");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an error signing up.",
+      });
+    }
   };
 
   return (
@@ -70,7 +85,11 @@ export const SignUp = () => {
                       <FormItem>
                         <FormLabel>First name</FormLabel>
                         <FormControl>
-                          <Input id="first-name" placeholder="Max" {...field} />
+                          <Input
+                            id="firstName"
+                            placeholder="Max"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -84,7 +103,7 @@ export const SignUp = () => {
                         <FormLabel>Last name</FormLabel>
                         <FormControl>
                           <Input
-                            id="last-name"
+                            id="lastName"
                             placeholder="Robinson"
                             {...field}
                           />
@@ -104,7 +123,7 @@ export const SignUp = () => {
                         <Input
                           id="email"
                           type="email"
-                          placeholder="m@example.com"
+                          placeholder="example@gmail.com"
                           {...field}
                         />
                       </FormControl>

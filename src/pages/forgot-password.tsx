@@ -62,28 +62,37 @@ export const ForgotPassword = () => {
 
   const handleSubmitEmail = (data: z.infer<typeof emailSchema>) => {
     setCurrentStep(2);
-    console.log(data.email);
+    console.log("Email:", data.email);
+
     toast({
       title: "Success",
       description: "An OTP has been sent to your email.",
     });
+
+    emailForm.reset();
   };
 
   const handleSubmitOtp = (data: z.infer<typeof otpSchema>) => {
     setCurrentStep(3);
-    console.log(data.pin);
+    console.log("OTP:", data.pin);
+
     toast({
       title: "Success",
       description: "Your OTP has been verified.",
     });
+
+    otpForm.reset();
   };
 
   const handleSubmitPassword = (data: z.infer<typeof passwordSchema>) => {
-    console.log(data.password);
+    console.log("Password:", data.password);
+
     toast({
       title: "Success",
       description: "Your password has been reset.",
     });
+
+    passwordForm.reset();
     navigate("/sign-in");
   };
 

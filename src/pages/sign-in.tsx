@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { Navbar } from "@/components/navbar.tsx";
 import { Footer } from "@/components/footer.tsx";
 import { useForm } from "react-hook-form";
@@ -26,6 +26,8 @@ import { toast } from "@/hooks/use-toast";
 import { signInSchema } from "@/validations/sign-in.tsx";
 
 export const SignIn = () => {
+  const navigate = useNavigate();
+
   const signInForm = useForm<z.infer<typeof signInSchema>>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -35,11 +37,17 @@ export const SignIn = () => {
   });
 
   const handleSubmitSignIn = (data: z.infer<typeof signInSchema>) => {
-    console.log(data);
+    console.log("Email:", data.email);
+    console.log("Password:", data.password);
+
     toast({
       title: "Success",
       description: "You have successfully signed in.",
     });
+
+    signInForm.reset();
+
+    navigate("/");
   };
 
   return (
@@ -70,7 +78,7 @@ export const SignIn = () => {
                         <Input
                           id="email"
                           type="text"
-                          placeholder="m@example.com"
+                          placeholder="example@gmail.com"
                           {...field}
                         />
                       </FormControl>
