@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { useTheme } from "@/providers/theme-provider.tsx";
+import { Button } from "@/components/ui";
+import { useTheme } from "@/providers";
 import {LaptopMinimal, Moon, Sun} from "lucide-react";
 
 // Define the Theme type

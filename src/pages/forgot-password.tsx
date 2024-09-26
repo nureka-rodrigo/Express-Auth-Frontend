@@ -1,38 +1,33 @@
-import { Button } from "@/components/ui/button";
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Navbar } from "@/components/navbar.tsx";
-import { Footer } from "@/components/footer.tsx";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import {
+  Input,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { toast } from "@/hooks/use-toast";
+} from "@/components/ui";
+import { Navbar, Footer } from "@/components";
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { toast } from "@/hooks";
 import {
   emailSchema,
   otpSchema,
   passwordSchema,
-} from "@/validations/forgot-password";
+} from "@/validations";
 import {useNavigate} from "react-router-dom";
 
 export const ForgotPassword = () => {

@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator.tsx";
+import { Separator } from "@/components/ui";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

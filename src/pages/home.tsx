@@ -1,8 +1,6 @@
-import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Badge, Button, buttonVariants } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { Navbar } from "@/components/navbar.tsx";
-import { Footer } from "@/components/footer.tsx";
+import { Footer, Navbar } from "@/components";
 import { Link } from "react-router-dom";
 
 export const Home = () => {

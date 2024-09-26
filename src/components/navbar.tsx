@@ -1,8 +1,7 @@
 import {Menu} from "lucide-react";
-import {Button} from "@/components/ui/button";
-import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger,} from "@/components/ui/sheet";
+import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, Button, Separator} from "@/components/ui";
 import {Link} from "react-router-dom";
-import {ThemeToggle} from "@/components/theme-switcher.tsx";
+import {ThemeToggle} from "@/components";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,10 +11,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {Avatar, AvatarFallback, AvatarImage} from "@radix-ui/react-avatar";
-import {apiClient} from "@/api/axios.tsx";
-import {toast} from "@/hooks/use-toast.tsx";
+import {apiClient} from "@/api";
+import {toast} from "@/hooks";
 import { useEffect, useState } from "react";
-import { Separator } from "@/components/ui/separator.tsx";
 
 export const Navbar = () => {
   const [isLogged, setIsLogged] = useState(localStorage.getItem("isLogged"));

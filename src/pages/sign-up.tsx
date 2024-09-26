@@ -1,29 +1,26 @@
-import { Button } from "@/components/ui/button";
 import {
+  Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import {Link, useNavigate} from "react-router-dom";
-import { Navbar } from "@/components/navbar.tsx";
-import { Footer } from "@/components/footer.tsx";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
+  Input,
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { toast } from "@/hooks/use-toast";
-import { signUpSchema } from "@/validations/sign-up.tsx";
-import { apiClient } from "@/api/axios";
+} from "@/components/ui";
+import {Link, useNavigate} from "react-router-dom";
+import { Footer, Navbar } from "@/components";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "@/hooks";
+import { signUpSchema } from "@/validations";
+import { apiClient } from "@/api";
 
 export const SignUp = () => {
   const navigate = useNavigate();
