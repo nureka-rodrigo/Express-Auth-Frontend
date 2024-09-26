@@ -21,8 +21,11 @@ import { z } from "zod";
 import { toast } from "@/hooks";
 import { signUpSchema } from "@/validations";
 import { apiClient } from "@/api";
+import {LoaderCircle} from "lucide-react";
+import {useState} from "react";
 
 export const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const signUpForm = useForm<z.infer<typeof signUpSchema>>({
@@ -37,6 +40,7 @@ export const SignUp = () => {
   });
 
   const handleSubmitSignUp = async (data: z.infer<typeof signUpSchema>) => {
+    setIsLoading(true);
     try {
       const client = apiClient();
       await client.post('/auth/sign-up', data);
@@ -48,11 +52,14 @@ export const SignUp = () => {
 
       signUpForm.reset();
       navigate("/sign-in");
-    } catch (error: any) {
+    } catch (error) {
+      const response = error.response;
       toast({
-        title: "Error",
-        description: "There was an error signing up.",
+          title: "Error",
+          description: response.data.error ? response.data.error : response.data.message,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -164,8 +171,9 @@ export const SignUp = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full gap-2">
                   Create an account
+                  {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
                 </Button>
                 <div className="mt-4 text-center text-sm">
                   Already have an account?{" "}

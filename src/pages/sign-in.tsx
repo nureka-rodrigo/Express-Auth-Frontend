@@ -22,8 +22,11 @@ import { z } from "zod";
 import { toast } from "@/hooks";
 import { signInSchema } from "@/validations";
 import { apiClient } from "@/api";
+import {LoaderCircle} from "lucide-react";
+import {useState} from "react";
 
 export const SignIn = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const signInForm = useForm<z.infer<typeof signInSchema>>({
@@ -35,6 +38,7 @@ export const SignIn = () => {
   });
 
   const handleSubmitSignIn = async (data: z.infer<typeof signInSchema>) => {
+    setIsLoading(true);
     try {
       const client = apiClient();
       const response = await client.post('/auth/sign-in', data);
@@ -54,15 +58,14 @@ export const SignIn = () => {
 
       signInForm.reset();
       navigate("/");
-    } catch (error: any) {
+    } catch (error) {
       const response = error.response;
-
-      if (response.status === 400) {
-        toast({
+      toast({
           title: "Error",
-          description: response.data.message,
-        });
-      }
+          description: response.data.error ? response.data.error : response.data.message,
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -133,8 +136,9 @@ export const SignIn = () => {
                 </div>
               </CardContent>
               <CardFooter>
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full gap-2">
                   Sign in
+                  {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
                 </Button>
               </CardFooter>
             </Card>
