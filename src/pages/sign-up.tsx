@@ -51,7 +51,7 @@ export const SignUp = () => {
 
       signUpForm.reset();
       navigate("/sign-in");
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error",
         description: "There was an error signing up.",

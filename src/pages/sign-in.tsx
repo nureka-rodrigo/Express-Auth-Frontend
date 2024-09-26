@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast";
 import { signInSchema } from "@/validations/sign-in.tsx";
+import { apiClient } from "@/api/axios.tsx";
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -36,18 +37,36 @@ export const SignIn = () => {
     },
   });
 
-  const handleSubmitSignIn = (data: z.infer<typeof signInSchema>) => {
-    console.log("Email:", data.email);
-    console.log("Password:", data.password);
+  const handleSubmitSignIn = async (data: z.infer<typeof signInSchema>) => {
+    try {
+      const client = apiClient();
+      const response = await client.post('/auth/sign-in', data);
+      const userDetails = {
+        firstName: response.data.firstName,
+        lastName: response.data.lastName,
+        email: response.data.email,
+      };
 
-    toast({
-      title: "Success",
-      description: "You have successfully signed in.",
-    });
+      localStorage.setItem("user", JSON.stringify(userDetails));
+      localStorage.setItem("isLogged", "true");
 
-    signInForm.reset();
+      toast({
+        title: "Success",
+        description: "You have successfully signed up.",
+      });
 
-    navigate("/");
+      signInForm.reset();
+      navigate("/");
+    } catch (error: any) {
+      const response = error.response;
+
+      if (response.status === 400) {
+        toast({
+          title: "Error",
+          description: response.data.message,
+        });
+      }
+    }
   };
 
   return (
