@@ -5,7 +5,6 @@ import {ThemeToggle} from "@/components";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem, DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -46,7 +45,7 @@ export const Navbar = () => {
       localStorage.setItem("isLogged", "false");
       setIsLogged("false");
       setUser({});
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "An error occurred.",
@@ -71,7 +70,7 @@ export const Navbar = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="@shadcn" className="rounded-full"/>
+                    <AvatarImage src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="User Profile" className="rounded-full"/>
                     <AvatarFallback className="font-bold">
                       {user.firstName?.slice(0, 1).toUpperCase() + user.lastName?.slice(0, 1).toUpperCase()}
                     </AvatarFallback>
@@ -79,7 +78,7 @@ export const Navbar = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56">
                   <DropdownMenuLabel className="space-y-1">
-                    <p>{user.firstName + user.lastName || "Unknown User"}</p>
+                    <p>{user.firstName + " " + user.lastName || "Unknown User"}</p>
                     <p className="text-xs">{user.email || "Unknown Email"}</p>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
