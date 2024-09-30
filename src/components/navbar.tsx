@@ -46,7 +46,7 @@ export const Navbar = () => {
       localStorage.setItem("isLogged", "false");
       setIsLogged("false");
       setUser({});
-    } catch (error: any) {
+    } catch (error) {
       toast({
         title: "Error",
         description: "An error occurred.",
@@ -83,12 +83,6 @@ export const Navbar = () => {
                     <p className="text-xs">{user.email || "Unknown Email"}</p>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>
-                      Profile
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator/>
                   <DropdownMenuItem onClick={handleLogOut} className="!text-destructive font-semibold">
                     Log out
                   </DropdownMenuItem>
