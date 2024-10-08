@@ -1,7 +1,7 @@
-import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
-import {apiClient} from "@/api";
-import {toast} from "@/hooks/use-toast.tsx";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { apiClient } from "@/api";
+import { toast } from "@/hooks/use-toast.tsx";
 import Cookies from "js-cookie";
 
 export const useAdminAuth = () => {
@@ -31,10 +31,10 @@ export const useAdminAuth = () => {
       }
     };
 
-    validateToken().then(r => r);
+    validateToken().then((r) => r);
 
     const handleCookieChange = () => {
-      validateToken().then(r => r);
+      validateToken().then((r) => r);
     };
 
     window.addEventListener("cookiechange", handleCookieChange);

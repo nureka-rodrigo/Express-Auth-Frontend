@@ -15,8 +15,8 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { apiClient } from "@/api";
-import {toast, useAdminAuth} from "@/hooks";
-import {ThemeToggle} from "@/components/theme-switcher.tsx";
+import { toast, useAdminAuth } from "@/hooks";
+import { ThemeToggle } from "@/components/theme-switcher.tsx";
 
 const navItems = [
   {
