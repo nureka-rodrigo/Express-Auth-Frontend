@@ -14,7 +14,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "@/components";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,8 +22,8 @@ import { z } from "zod";
 import { toast } from "@/hooks";
 import { signInSchema } from "@/validations";
 import { apiClient } from "@/api";
-import {LoaderCircle} from "lucide-react";
-import {useState} from "react";
+import { LoaderCircle } from "lucide-react";
+import { useState } from "react";
 
 export const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +41,7 @@ export const SignIn = () => {
     setIsLoading(true);
     try {
       const client = apiClient();
-      const response = await client.post('/auth/sign-in', data);
+      const response = await client.post("/auth/sign-in", data);
       const userDetails = {
         firstName: response.data.firstName,
         lastName: response.data.lastName,
@@ -61,8 +61,10 @@ export const SignIn = () => {
     } catch (error) {
       const response = error.response;
       toast({
-          title: "Error",
-          description: response.data.error ? response.data.error : response.data.message,
+        title: "Error",
+        description: response.data.error
+          ? response.data.error
+          : response.data.message,
       });
     } finally {
       setIsLoading(false);
@@ -138,7 +140,9 @@ export const SignIn = () => {
               <CardFooter>
                 <Button type="submit" className="w-full gap-2">
                   Sign in
-                  {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
+                  {isLoading && (
+                    <LoaderCircle className="h-5 w-5 animate-spin" />
+                  )}
                 </Button>
               </CardFooter>
             </Card>

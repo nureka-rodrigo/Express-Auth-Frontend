@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui";
-import {Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer, Navbar } from "@/components";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,8 +21,8 @@ import { z } from "zod";
 import { toast } from "@/hooks";
 import { signUpSchema } from "@/validations";
 import { apiClient } from "@/api";
-import {LoaderCircle} from "lucide-react";
-import {useState} from "react";
+import { LoaderCircle } from "lucide-react";
+import { useState } from "react";
 
 export const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +43,7 @@ export const SignUp = () => {
     setIsLoading(true);
     try {
       const client = apiClient();
-      await client.post('/auth/sign-up', data);
+      await client.post("/auth/sign-up", data);
 
       toast({
         title: "Success",
@@ -55,8 +55,10 @@ export const SignUp = () => {
     } catch (error) {
       const response = error.response;
       toast({
-          title: "Error",
-          description: response.data.error ? response.data.error : response.data.message,
+        title: "Error",
+        description: response.data.error
+          ? response.data.error
+          : response.data.message,
       });
     } finally {
       setIsLoading(false);
@@ -89,11 +91,7 @@ export const SignUp = () => {
                       <FormItem>
                         <FormLabel>First name</FormLabel>
                         <FormControl>
-                          <Input
-                            id="firstName"
-                            placeholder="Max"
-                            {...field}
-                          />
+                          <Input id="firstName" placeholder="Max" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -173,7 +171,9 @@ export const SignUp = () => {
                 />
                 <Button type="submit" className="w-full gap-2">
                   Create an account
-                  {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
+                  {isLoading && (
+                    <LoaderCircle className="h-5 w-5 animate-spin" />
+                  )}
                 </Button>
                 <div className="mt-4 text-center text-sm">
                   Already have an account?{" "}

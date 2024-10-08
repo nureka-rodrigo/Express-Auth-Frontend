@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import Cookies from "js-cookie";
 
 export const apiClient = () => {
@@ -7,10 +7,10 @@ export const apiClient = () => {
   return axios.create({
     baseURL: import.meta.env.VITE_APP_BACKEND_URL,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     withCredentials: true,
     timeout: 10000,
   });
-}
+};

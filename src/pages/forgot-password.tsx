@@ -23,14 +23,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "@/hooks";
-import {
-  emailSchema,
-  otpSchema,
-  passwordSchema,
-} from "@/validations";
-import {useNavigate} from "react-router-dom";
+import { emailSchema, otpSchema, passwordSchema } from "@/validations";
+import { useNavigate } from "react-router-dom";
 import { apiClient } from "@/api";
-import {LoaderCircle} from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 
 export const ForgotPassword = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -64,7 +60,7 @@ export const ForgotPassword = () => {
     setIsLoading(true);
     try {
       const client = apiClient();
-      await client.post('/auth/forgot-password/validate-email', data);
+      await client.post("/auth/forgot-password/validate-email", data);
 
       toast({
         title: "Success",
@@ -77,8 +73,10 @@ export const ForgotPassword = () => {
     } catch (error) {
       const response = error.response;
       toast({
-          title: "Error",
-          description: response.data.error ? response.data.error : response.data.message,
+        title: "Error",
+        description: response.data.error
+          ? response.data.error
+          : response.data.message,
       });
     } finally {
       setIsLoading(false);
@@ -89,9 +87,9 @@ export const ForgotPassword = () => {
     setIsLoading(true);
     try {
       const client = apiClient();
-      await client.post('/auth/forgot-password/validate-otp', {
+      await client.post("/auth/forgot-password/validate-otp", {
         email,
-        otp: data.pin
+        otp: data.pin,
       });
 
       toast({
@@ -106,7 +104,9 @@ export const ForgotPassword = () => {
       const response = error.response;
       toast({
         title: "Error",
-        description: response.data.error ? response.data.error : response.data.message,
+        description: response.data.error
+          ? response.data.error
+          : response.data.message,
       });
     } finally {
       setIsLoading(false);
@@ -117,10 +117,10 @@ export const ForgotPassword = () => {
     setIsLoading(true);
     try {
       const client = apiClient();
-      await client.post('/auth/forgot-password/reset-password', {
+      await client.post("/auth/forgot-password/reset-password", {
         email,
         otp,
-        password: data.password
+        password: data.password,
       });
 
       toast({
@@ -130,12 +130,14 @@ export const ForgotPassword = () => {
 
       setCurrentStep(2);
       passwordForm.reset();
-      navigate('/sign-in');
+      navigate("/sign-in");
     } catch (error) {
       const response = error.response;
       toast({
         title: "Error",
-        description: response.data.error ? response.data.error : response.data.message,
+        description: response.data.error
+          ? response.data.error
+          : response.data.message,
       });
     } finally {
       setIsLoading(false);
@@ -185,7 +187,9 @@ export const ForgotPassword = () => {
                       <CardFooter>
                         <Button type="submit" className="w-full gap-2">
                           Proceed
-                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
+                          {isLoading && (
+                            <LoaderCircle className="h-5 w-5 animate-spin" />
+                          )}
                         </Button>
                       </CardFooter>
                     </Card>
@@ -237,7 +241,9 @@ export const ForgotPassword = () => {
                       <CardFooter>
                         <Button type="submit" className="w-full gap-2">
                           Proceed
-                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
+                          {isLoading && (
+                            <LoaderCircle className="h-5 w-5 animate-spin" />
+                          )}
                         </Button>
                       </CardFooter>
                     </Card>
@@ -283,7 +289,9 @@ export const ForgotPassword = () => {
                       <CardFooter>
                         <Button type="submit" className="w-full gap-2">
                           Reset
-                          {isLoading && <LoaderCircle className="h-5 w-5 animate-spin"/>}
+                          {isLoading && (
+                            <LoaderCircle className="h-5 w-5 animate-spin" />
+                          )}
                         </Button>
                       </CardFooter>
                     </Card>
