@@ -15,7 +15,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { apiClient } from "@/api";
-import { toast } from "@/hooks";
+import {toast, useAdminAuth} from "@/hooks";
 import {ThemeToggle} from "@/components/theme-switcher.tsx";
 
 const navItems = [
@@ -42,6 +42,8 @@ export const DashboardLayout = ({ children }: DashboardProps) => {
   );
   const location = useLocation();
   const navigate = useNavigate();
+
+  useAdminAuth();
 
   useEffect(() => {
     const handleStorageChange = () => {
