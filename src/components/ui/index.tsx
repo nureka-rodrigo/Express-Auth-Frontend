@@ -8,6 +8,7 @@ export * from "./input-otp";
 export * from "./label";
 export * from "./separator";
 export * from "./sheet";
+export * from "./table";
 export * from "./toast";
 export * from "./toaster";
 export * from "./tooltip";
