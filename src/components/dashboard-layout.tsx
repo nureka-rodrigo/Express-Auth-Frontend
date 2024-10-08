@@ -12,7 +12,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ReactNode, useEffect, useState } from "react";
 import { apiClient } from "@/api";
 import { toast } from "@/hooks";
@@ -40,6 +40,7 @@ export const DashboardLayout = ({ children }: DashboardProps) => {
     JSON.parse(localStorage.getItem("user") || "{}")
   );
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -73,6 +74,8 @@ export const DashboardLayout = ({ children }: DashboardProps) => {
         title: "Error",
         description: "An error occurred.",
       });
+    } finally {
+      navigate("/sign-in");
     }
   };
 

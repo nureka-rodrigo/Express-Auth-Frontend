@@ -46,6 +46,7 @@ export const SignIn = () => {
         firstName: response.data.firstName,
         lastName: response.data.lastName,
         email: response.data.email,
+        role: response.data.role,
       };
 
       localStorage.setItem("user", JSON.stringify(userDetails));
@@ -57,7 +58,12 @@ export const SignIn = () => {
       });
 
       signInForm.reset();
-      navigate("/");
+
+      if(userDetails.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       const response = error.response;
       toast({

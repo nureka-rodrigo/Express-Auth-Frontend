@@ -8,7 +8,7 @@ import {
   Button,
   Separator,
 } from "@/components/ui";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ThemeToggle } from "@/components";
 import {
   DropdownMenu,
@@ -27,6 +27,7 @@ export const Navbar = () => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user") || "{}")
   );
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleStorageChange = () => {
@@ -60,6 +61,8 @@ export const Navbar = () => {
         title: "Error",
         description: "An error occurred.",
       });
+    } finally {
+      navigate("/sign-in");
     }
   };
 
