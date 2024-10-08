@@ -25,7 +25,7 @@ export const AdminUsers = () => {
         <h1 className="text-lg font-semibold md:text-2xl">Users</h1>
       </div>
       <div
-        className="flex flex-1 justify-center rounded-lg"
+        className="flex flex-1 justify-center"
       >
         <div className="flex flex-col w-full text-center">
           {/* Add your content here */}
